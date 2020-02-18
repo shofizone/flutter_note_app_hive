@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:notes/note.dart';
 import 'package:provider/provider.dart';
 
 import 'HomePage.dart';
@@ -10,14 +11,11 @@ void main() async {
   runApp(MyApp());
 
   /// init hive
- path_provider.getApplicationDocumentsDirectory().then((documentDirectory){
-        Hive.init(documentDirectory.path);
-      });
+  path_provider.getApplicationDocumentsDirectory().then((documentDirectory) {
+    Hive.init(documentDirectory.path);
+  });
 
-
-
-
-
+  Hive.registerAdapter(NoteAdapter());
 }
 
 class MyApp extends StatelessWidget {
